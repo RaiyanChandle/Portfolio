@@ -47,7 +47,9 @@ export default function Hero() {
               onClick={(e) => handleNavClick(e, 'about')}
               className="relative group hover:text-white transition duration-300 cursor-pointer pb-1 block"
             >
-              About
+              {/* Expanded hover/click hitbox */}
+              <span className="absolute -inset-y-3 -inset-x-5 z-0 pointer-events-auto" />
+              <span className="relative z-10">About</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#6bee18] transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
@@ -57,7 +59,9 @@ export default function Hero() {
               onClick={(e) => handleNavClick(e, 'skills')}
               className="relative group hover:text-white transition duration-300 cursor-pointer pb-1 block"
             >
-              Skills
+              {/* Expanded hover/click hitbox */}
+              <span className="absolute -inset-y-3 -inset-x-5 z-0 pointer-events-auto" />
+              <span className="relative z-10">Skills</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#6bee18] transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
@@ -67,7 +71,9 @@ export default function Hero() {
               onClick={(e) => handleNavClick(e, 'projects')}
               className="relative group hover:text-white transition duration-300 cursor-pointer pb-1 block"
             >
-              Projects
+              {/* Expanded hover/click hitbox */}
+              <span className="absolute -inset-y-3 -inset-x-5 z-0 pointer-events-auto" />
+              <span className="relative z-10">Projects</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#6bee18] transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
@@ -78,7 +84,9 @@ export default function Hero() {
               onClick={(e) => handleNavClick(e, 'contact')}
               className="relative group hover:text-white transition duration-300 cursor-pointer pb-1 block"
             >
-              Contact Me
+              {/* Expanded hover/click hitbox */}
+              <span className="absolute -inset-y-3 -inset-x-5 z-0 pointer-events-auto" />
+              <span className="relative z-10">Contact Me</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#6bee18] transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
