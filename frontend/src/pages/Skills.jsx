@@ -48,19 +48,19 @@ export default function Skills() {
     { name: 'Scikit-learn', src: scikitLogo, color: '#F89939' },
     { name: 'TensorFlow', src: tensorflowLogo, color: '#FF9900' },
     { name: 'Keras', src: kerasLogo, color: '#D00000' },
-    { name: 'NumPy', src: numpyLogo, color: '#013243' },
-    { name: 'Pandas', src: pandasLogo, color: '#150458' },
+    { name: 'NumPy', src: numpyLogo, color: '#4DABF7' },
+    { name: 'Pandas', src: pandasLogo, color: '#8F71FF' },
 
     // Backend APIs & Databases
     { name: 'MySQL', src: mysqlLogo, color: '#4479A1' },
     { name: 'PostgreSQL', src: postgresLogo, color: '#4169E1' },
-    { name: 'Flask', src: flaskLogo, color: '#202020' },
+    { name: 'Flask', src: flaskLogo, color: '#E4E4E7' },
     { name: 'FastAPI', src: fastapiLogo, color: '#009688' },
     
 
     // Developer Tools & Utilities
     { name: 'Git', src: gitLogo, color: '#F05032' },
-    { name: 'GitHub', src: githubLogo, color: '#24292E' },
+    { name: 'GitHub', src: githubLogo, color: '#FFFFFF' },
     { name: 'VS Code', src: vscodeLogo, color: '#007ACC' },
     { name: 'Canva', src: canvaLogo, color: '#00C4CC' }
   ];
@@ -89,7 +89,7 @@ export default function Skills() {
                 logo={item.src}
                 color={item.color}
                 size={1.25}
-                isLogoFilter={['Flask', 'Express', 'GitHub'].includes(item.name)}
+                isLogoFilter={['Flask', 'Express', 'GitHub', 'Pandas'].includes(item.name)}
                 className="transition-transform duration-300 hover:scale-105"
               />
             </div>

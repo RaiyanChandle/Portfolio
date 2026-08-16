@@ -34,22 +34,32 @@ const Folder = ({
       >
         {/* Main Folder Back Panel (Wireframe Back) */}
         <div
-          className="relative w-[100px] h-[80px] rounded-tr-[10px] rounded-br-[10px] rounded-bl-[10px] border"
+          className="relative w-[100px] h-[80px] border-2 transition-all duration-300"
           style={{ 
-            backgroundColor: '#000000',
-            borderColor: faintBorderColor
+            backgroundColor: hovered ? 'rgba(255, 255, 255, 0.03)' : '#000000',
+            borderColor: faintBorderColor,
+            borderRadius: '5px 10px 10px 10px',
+            backdropFilter: hovered ? 'blur(8px)' : 'none',
+            WebkitBackdropFilter: hovered ? 'blur(8px)' : 'none'
           }}
         >
           {/* Folder Tab */}
           <span
-            className="absolute z-10 bottom-full left-[-1px] w-[30px] h-[10px] rounded-tl-[5px] rounded-tr-[5px] border-t border-l border-r"
+            className="absolute z-10 bottom-full left-[-2px] w-[32px] h-[12px] rounded-tl-[5px] rounded-tr-[5px] border-t-2 border-l-2 border-r-2 transition-all duration-300"
             style={{ 
-              backgroundColor: '#000000',
-              borderColor: faintBorderColor
+              backgroundColor: hovered ? 'rgba(255, 255, 255, 0.03)' : '#000000',
+              borderColor: faintBorderColor,
+              backdropFilter: hovered ? 'blur(8px)' : 'none',
+              WebkitBackdropFilter: hovered ? 'blur(8px)' : 'none'
             }}
           >
             {/* Mask to cover the parent's top border under the tab without protruding borders */}
-            <span className="absolute bottom-[-1px] left-0 right-0 h-[1px] bg-black z-20"></span>
+            <span 
+              className="absolute bottom-[-2px] left-0 right-0 h-[2px] z-20 transition-colors duration-300"
+              style={{
+                backgroundColor: hovered ? 'transparent' : '#000000'
+              }}
+            ></span>
           </span>
 
           {/* Sliding Single Page Tooltip - styled as a rustic manila/typewriter paper sheet */}
@@ -72,11 +82,13 @@ const Folder = ({
           {/* Folder Front Flap (Wireframe Front) - tilts down on hover */}
           {/* The logo is nested inside the front flap so it bends, skews, and scales in sync with the flap! */}
           <div
-            className="absolute z-30 w-full h-full inset-0 origin-bottom transition-transform duration-300 ease-out will-change-transform group-hover:[transform:skew(-12deg)_scaleY(0.75)] border flex items-center justify-center"
+            className="absolute z-30 left-[-2px] top-[-2px] w-[100px] h-[80px] origin-bottom transition-all duration-300 ease-out will-change-transform group-hover:[transform:skew(-12deg)_scaleY(0.75)] border-2 flex items-center justify-center"
             style={{
-              backgroundColor: '#000000',
+              backgroundColor: hovered ? 'rgba(255, 255, 255, 0.05)' : '#000000',
               borderColor: solidBorderColor,
               borderRadius: '5px 10px 10px 10px',
+              backdropFilter: hovered ? 'blur(8px)' : 'none',
+              WebkitBackdropFilter: hovered ? 'blur(8px)' : 'none'
             }}
           >
             {logo && (
