@@ -62,8 +62,8 @@ export const PROJECTS_DATA = [
       'Auth & Security': ['JWT in httpOnly cookies', 'bcrypt'],
       'Streaming': ['Server-Sent Events (SSE)']
     },
-    github: 'https://github.com/RaiyanChandle',
-    liveDemo: 'https://github.com/RaiyanChandle'
+    github: 'https://github.com/RaiyanChandle/TableTalk',
+    liveDemo: 'https://tabletalk.r2cstack.site/'
   },
   {
     id: 'hirehunt',
