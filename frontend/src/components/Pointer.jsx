@@ -7,9 +7,10 @@ export function Pointer({
   children,
   ...props
 }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
   const [isActive, setIsActive] = useState(false);
+  const isActiveRef = useRef(false);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -21,16 +22,23 @@ export function Pointer({
     const handleMouseMove = (e) => {
       x.set(e.clientX);
       y.set(e.clientY);
-      setIsActive(true);
+      if (!isActiveRef.current) {
+        isActiveRef.current = true;
+        setIsActive(true);
+      }
     };
 
     const handleMouseEnter = (e) => {
       x.set(e.clientX);
       y.set(e.clientY);
-      setIsActive(true);
+      if (!isActiveRef.current) {
+        isActiveRef.current = true;
+        setIsActive(true);
+      }
     };
 
     const handleMouseLeave = () => {
+      isActiveRef.current = false;
       setIsActive(false);
     };
 
@@ -45,9 +53,9 @@ export function Pointer({
       document.head.appendChild(styleEl);
 
       parentElement.style.cursor = "none";
-      parentElement.addEventListener("mousemove", handleMouseMove);
-      parentElement.addEventListener("mouseenter", handleMouseEnter);
-      parentElement.addEventListener("mouseleave", handleMouseLeave);
+      parentElement.addEventListener("mousemove", handleMouseMove, { passive: true });
+      parentElement.addEventListener("mouseenter", handleMouseEnter, { passive: true });
+      parentElement.addEventListener("mouseleave", handleMouseLeave, { passive: true });
 
       return () => {
         styleEl.remove();
@@ -65,10 +73,10 @@ export function Pointer({
       <AnimatePresence>
         {isActive && (
           <motion.div
-            className="pointer-events-none fixed z-50"
+            className="pointer-events-none fixed top-0 left-0 z-50 will-change-transform"
             style={{
-              top: y,
-              left: x,
+              x,
+              y,
               ...style,
             }}
             initial={{

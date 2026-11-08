@@ -193,29 +193,11 @@ void main() {
     };
 
     let isVisible = true;
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          isVisible = entry.isIntersecting;
-        });
-      },
-      { threshold: 0.05 }
-    );
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    window.addEventListener('resize', resize);
-    if (mouseInteraction) {
-      containerRef.current.addEventListener('mousemove', handleMouseMove);
-      containerRef.current.addEventListener('mouseenter', handleMouseEnter);
-      containerRef.current.addEventListener('mouseleave', handleMouseLeave);
-    }
-    resize();
+    let rafId = null;
 
     const render = t => {
       if (!isVisible) {
-        requestAnimationFrame(render);
+        rafId = null;
         return;
       }
 
@@ -232,13 +214,42 @@ void main() {
       uniforms.mousePosition.value = [mousePositionRef.current.x, mousePositionRef.current.y];
 
       renderer.render({ scene: mesh });
-      requestAnimationFrame(render);
+      rafId = requestAnimationFrame(render);
     };
 
-    requestAnimationFrame(render);
+    const startRender = () => {
+      if (!rafId) {
+        rafId = requestAnimationFrame(render);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          isVisible = entry.isIntersecting;
+          if (isVisible) {
+            startRender();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    window.addEventListener('resize', resize, { passive: true });
+    if (mouseInteraction) {
+      containerRef.current.addEventListener('mousemove', handleMouseMove, { passive: true });
+      containerRef.current.addEventListener('mouseenter', handleMouseEnter, { passive: true });
+      containerRef.current.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    }
+    resize();
+    startRender();
 
     const container = containerRef.current;
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener('resize', resize);
       if (mouseInteraction && container) {
         container.removeEventListener('mousemove', handleMouseMove);

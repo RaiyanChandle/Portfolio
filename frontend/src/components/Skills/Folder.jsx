@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
-const Folder = ({ 
+const Folder = memo(({ 
   color = '#5227FF', 
   size = 1, 
   logo = null, 
@@ -95,6 +95,10 @@ const Folder = ({
               <img 
                 src={logo} 
                 alt={name} 
+                loading="lazy"
+                decoding="async"
+                width={48}
+                height={48}
                 className={`w-12 h-12 object-contain transition-transform duration-300 ease-out will-change-transform group-hover:scale-110 ${
                   isLogoFilter ? 'brightness-0 invert' : ''
                 }`}
@@ -105,6 +109,6 @@ const Folder = ({
       </div>
     </div>
   );
-};
+});
 
 export default Folder;

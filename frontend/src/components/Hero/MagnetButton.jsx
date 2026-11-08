@@ -23,6 +23,7 @@ const Magnet = ({
 
     let lastMeasure = 0;
     let rect = null;
+    let wasActive = false;
 
     const handleMouseMove = e => {
       if (!magnetRef.current) return;
@@ -41,12 +42,14 @@ const Magnet = ({
       const distY = Math.abs(centerY - e.clientY);
 
       if (distX < width / 2 + padding && distY < height / 2 + padding) {
+        wasActive = true;
         setIsActive(true);
 
         const offsetX = (e.clientX - centerX) / magnetStrength;
         const offsetY = (e.clientY - centerY) / magnetStrength;
         setPosition({ x: offsetX, y: offsetY });
-      } else {
+      } else if (wasActive) {
+        wasActive = false;
         setIsActive(false);
         setPosition({ x: 0, y: 0 });
       }
