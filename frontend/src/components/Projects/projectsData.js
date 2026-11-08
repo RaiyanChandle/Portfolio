@@ -126,8 +126,8 @@ export const PROJECTS_DATA = [
       'Database': ['PostgreSQL'],
       'Services': ['Cloudinary (uploads)', 'Twilio (SMS notifications)']
     },
-    github: 'https://github.com/RaiyanChandle/NEXUSUpdated',
-    liveDemo: 'https://github.com/RaiyanChandle/NEXUSUpdated'
+    github: 'https://github.com/RaiyanChandle/MegaProject',
+    liveDemo: 'https://nexus-staging.r2cstack.site/'
   },
   {
     id: 'arogya',
@@ -172,8 +172,8 @@ export const PROJECTS_DATA = [
         'Google Translate API'
       ]
     },
-    github: 'https://github.com/RaiyanChandle',
-    liveDemo: 'https://github.com/RaiyanChandle'
+    github: 'https://github.com/RaiyanChandle/Arogya',
+    liveDemo: 'https://arogya-bay-six.vercel.app/'
   },
   {
     id: 'codenest',

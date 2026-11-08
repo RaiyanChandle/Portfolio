@@ -28,7 +28,7 @@ export const ACHIEVEMENTS_DATA = [
     headline: 'Got 2nd Prize - PBL Sem VII',
     title: 'Project-Based Learning (PBL)',
     location: 'KITCOE, Kolhapur, MH',
-    date: 'Oct 2024',
+    date: 'Oct 2026',
     image: pbl2Img,
     team: [
       { name: 'Raiyan Chandle', linkedin: 'https://www.linkedin.com/in/raiyan-chandle/' },
@@ -56,9 +56,9 @@ export const ACHIEVEMENTS_DATA = [
     id: 'pbl-1',
     award: '1st Prize Winner',
     headline: 'Winner - PBL Sem   V',
-    title: 'Project-Based Learning (PBL) I',
-    location: 'Kolhapur, MH',
-    date: 'Apr 2024',
+    title: 'Project-Based Learning (PBL)',
+    location: 'KITCOE, Kolhapur, MH',
+    date: 'Oct 2025',
     image: pbl1Img,
     team: [
       { name: 'Raiyan Chandle', linkedin: 'https://www.linkedin.com/in/raiyan-chandle/' },

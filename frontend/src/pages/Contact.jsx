@@ -5,17 +5,52 @@ import CircularText from '../components/ContactMe/CircularText';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState({ state: 'idle', message: '' }); // 'idle' | 'sending' | 'success' | 'error'
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message) {
-      console.log('Contact form submitted:', formData);
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus({ state: 'error', message: 'Please fill out all fields.' });
+      setTimeout(() => setStatus({ state: 'idle', message: '' }), 4000);
+      return;
+    }
+
+    setStatus({ state: 'sending', message: 'Sending message...' });
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/raiyanchandle07edu@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`,
+          _template: 'box'
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok || data.success === 'true' || data.success === true) {
+        setStatus({ state: 'success', message: 'Message sent successfully! Check your inbox soon.' });
         setFormData({ name: '', email: '', message: '' });
-      }, 3000);
+        setTimeout(() => {
+          setStatus({ state: 'idle', message: '' });
+        }, 5000);
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      console.error('Contact form error:', err);
+      setStatus({
+        state: 'error',
+        message: 'Could not send message automatically. Please write to raiyanchandle07edu@gmail.com'
+      });
+      setTimeout(() => setStatus({ state: 'idle', message: '' }), 6000);
     }
   };
 
@@ -99,10 +134,36 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="mx-auto mt-4 px-10 py-3.5 rounded-full border border-zinc-800 text-white font-bold bg-black hover:bg-zinc-950 transition-all duration-200 text-sm cursor-pointer hover:scale-105 hover:border-[#6bee18] active:scale-95 flex items-center justify-center shadow-lg"
+            disabled={status.state === 'sending'}
+            className="mx-auto mt-4 px-10 py-3.5 rounded-full border border-zinc-800 text-white font-bold bg-black hover:bg-zinc-950 transition-all duration-200 text-sm cursor-pointer hover:scale-105 hover:border-[#6bee18] active:scale-95 flex items-center justify-center gap-2 shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {submitted ? 'Message Sent!' : 'Submit'}
+            {status.state === 'sending' ? (
+              <>
+                <svg className="animate-spin h-4 w-4 text-[#6bee18]" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                <span>Sending...</span>
+              </>
+            ) : status.state === 'success' ? (
+              <span className="text-[#6bee18]">Message Sent!</span>
+            ) : (
+              'Submit'
+            )}
           </button>
+
+          {/* Real-time status feedback */}
+          {status.message && (
+            <p className={`text-xs sm:text-sm mt-3 font-medium text-center transition-all ${
+              status.state === 'success'
+                ? 'text-[#6bee18]'
+                : status.state === 'error'
+                ? 'text-red-400'
+                : 'text-zinc-400'
+            }`}>
+              {status.message}
+            </p>
+          )}
         </form>
 
         {/* Social Icons */}

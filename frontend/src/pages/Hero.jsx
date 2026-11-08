@@ -40,7 +40,7 @@ export default function Hero() {
 
       {/* Top Navbar */}
       <nav className="w-full py-12 z-10 px-6">
-        <ul className="flex justify-center items-center gap-12 md:gap-20 text-lg md:text-xl font-semibold tracking-wide text-zinc-300">
+        <ul className="flex justify-center items-center gap-6 sm:gap-10 md:gap-14 lg:gap-16 xl:gap-20 text-base sm:text-lg md:text-xl font-semibold tracking-wide text-zinc-300 flex-wrap">
           <li>
             <a
               href="#about"
@@ -74,6 +74,19 @@ export default function Hero() {
               {/* Expanded hover/click hitbox */}
               <span className="absolute -inset-y-3 -inset-x-5 z-0 pointer-events-auto" />
               <span className="relative z-10">Projects</span>
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#6bee18] transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#achievements"
+              onClick={(e) => handleNavClick(e, 'achievements')}
+              className="relative group hover:text-white transition duration-300 cursor-pointer pb-1 block"
+            >
+              {/* Expanded hover/click hitbox */}
+              <span className="absolute -inset-y-3 -inset-x-5 z-0 pointer-events-auto" />
+              <span className="relative z-10">Achievements</span>
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#6bee18] transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>

@@ -20,20 +20,25 @@ export default function About() {
           About Me
         </motion.h2>
 
-        {/* Left-aligned plain body text with staggered fade-in-up animation */}
+        {/* Centered body text with staggered fade-in-up animation */}
         <motion.div 
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-          className="space-y-8 text-left text-zinc-300 text-xl md:text-2xl lg:text-[26px] font-normal leading-relaxed"
+          className="space-y-6 md:space-y-8 text-center text-zinc-300 text-xl md:text-2xl lg:text-[26px] font-normal leading-relaxed mx-auto"
         >
           <p>
-            Hi, I'm Raiyan Chandle, a final-year Computer Science student specializing in AI/ML, set to graduate in 2027. I build full-stack, AI-powered applications by combining the MERN stack with Machine Learning and Generative AI — from telemedicine platforms serving rural healthcare to intelligent agentic systems that solve real problems.
+            Hi, I'm Raiyan Chandle, a final-year Computer Science student specializing in AI/ML, graduating in 2027. I build at the intersection of <strong className="text-white font-semibold">Full-Stack Development, Machine Learning, and Generative AI</strong>, combining strong engineering with intelligent systems to turn ideas into meaningful digital experiences.
           </p>
           
           <p>
-            My work sits at the intersection of solid engineering and applied AI — I enjoy working across Machine Learning, Deep Learning, and Generative AI, and designing systems that feel genuinely intelligent, not just functional. I work across a vast tech stack spanning frontend, backend, and ML/AI tooling, and I'm always exploring new technologies to stay sharp and push what I build further.
+            From crafting intuitive interfaces and scalable backends to exploring intelligent models and agents, I enjoy solving complex problems, connecting the dots, and spotting patterns others might miss, perhaps a little influenced by a certain consulting detective. Always learning, experimenting, and looking for better ways to build.
+          </p>
+
+          <p className="text-zinc-400 italic text-lg md:text-xl lg:text-[22px] pt-1">
+            “My mind rebels at stagnation. Give me problems, give me work.”
+            <br /> <span className="not-italic text-zinc-500 font-normal">(Sherlock Holmes)</span>
           </p>
         </motion.div>
 
