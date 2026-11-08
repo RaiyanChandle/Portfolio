@@ -21,18 +21,22 @@ body {
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
+  cursor: none !important;
 }
 
 ::-webkit-scrollbar-track {
   background: #000000;
+  cursor: none !important;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #6bee18;
   border: 2px solid #000000;
   border-radius: 9999px;
+  cursor: none !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #85ff33;
+  cursor: none !important;
 }

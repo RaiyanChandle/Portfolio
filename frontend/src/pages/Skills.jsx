@@ -1,10 +1,11 @@
 import React from 'react';
 import Folder from '../components/Skills/Folder';
 
-// Import all 23 user-provided logos from the skillLogo assets folder
+// Import all 24 logos from the skillLogo assets folder
 import htmlLogo from '../assets/skillLogo/HTML5.svg';
 import cssLogo from '../assets/skillLogo/CSS3.svg';
 import jsLogo from '../assets/skillLogo/JavaScript.svg';
+import tsLogo from '../assets/skillLogo/TypeScript.svg';
 import tailwindLogo from '../assets/skillLogo/Tailwind CSS.svg';
 import reactLogo from '../assets/skillLogo/React.svg';
 import nodeLogo from '../assets/skillLogo/Node.js.svg';
@@ -29,12 +30,13 @@ import vscodeLogo from '../assets/skillLogo/Visual Studio Code (VS Code).svg';
 import canvaLogo from '../assets/skillLogo/Canva.svg';
 
 export default function Skills() {
-  // Flat list of 23 skills with custom folder brand colors
+  // Flat list of 24 skills with custom folder brand colors
   const skills = [
     // Frontend UI & Core Web
     { name: 'HTML5', src: htmlLogo, color: '#E34F26' },
     { name: 'CSS3', src: cssLogo, color: '#1572B6' },
     { name: 'JavaScript', src: jsLogo, color: '#F7DF1E' },
+    { name: 'TypeScript', src: tsLogo, color: '#3178C6' },
     { name: 'Tailwind CSS', src: tailwindLogo, color: '#06B6D4' },
     { name: 'React', src: reactLogo, color: '#61DAFB' },
     { name: 'Node.js', src: nodeLogo, color: '#339933' },

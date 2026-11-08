@@ -43,10 +43,17 @@ export function Pointer({
     };
 
     if (parentElement) {
-      // Force disable system cursor on all interactive children globally
+      // Force disable system cursor on all interactive children globally and scrollbars
       const styleEl = document.createElement("style");
       styleEl.innerHTML = `
-        * {
+        *, html, body {
+          cursor: none !important;
+        }
+        ::-webkit-scrollbar,
+        ::-webkit-scrollbar-track,
+        ::-webkit-scrollbar-thumb,
+        ::-webkit-scrollbar-button,
+        ::-webkit-scrollbar-corner {
           cursor: none !important;
         }
       `;
@@ -73,7 +80,7 @@ export function Pointer({
       <AnimatePresence>
         {isActive && (
           <motion.div
-            className="pointer-events-none fixed top-0 left-0 z-50 will-change-transform"
+            className="pointer-events-none fixed top-0 left-0 z-[99999] will-change-transform"
             style={{
               x,
               y,
